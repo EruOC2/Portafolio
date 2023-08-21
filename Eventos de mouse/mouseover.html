@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="miCanvas" width="500" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+        let ColorActual = getRandomColor();
+
+        // Color aleatorio RGBA
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            const a = 0.5; 
+            return `rgba(${r}, ${g}, ${b}, ${a})`;
+        }
+
+        // Círculo
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'black';
+
+        // Listener mousedown
+        canvas.addEventListener('mousedown', (e) => {
+            const x = e.clientX - canvas.getBoundingClientRect().left;
+            const y = e.clientY - canvas.getBoundingClientRect().top;
+
+            // Dibuja el círculo 
+            ctx.fillStyle = ColorActual;
+            ctx.beginPath();
+            ctx.arc(x, y, 40, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+        });
+
+        // Cambia el color 
+        canvas.addEventListener('mouseover', () => {
+            ColorActual = getRandomColor();
+        });
+    </script>
+</body>
+</html>
+
+
+

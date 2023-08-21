@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="miCanvas" width="500" height="500"></canvas>
+    <script>
+        
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // círculo 
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'black';
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)'; 
+
+        // Listener mousedown
+        canvas.addEventListener('mousedown', (e) => {
+            const x = e.clientX - canvas.getBoundingClientRect().left;
+            const y = e.clientY - canvas.getBoundingClientRect().top;
+
+            // círculo 
+            ctx.beginPath();
+            ctx.arc(x, y, 40, 0, Math.PI * 2); // 
+            ctx.fill(); 
+            ctx.stroke();
+            ctx.closePath();
+        });
+    </script>
+</body>
+</html>
+
+

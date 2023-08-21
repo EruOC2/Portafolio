@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="miCanvas" width="500" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+        let ColorActual = getRandomColor();
+        let figuraActual = 'círculo'; 
+
+        // Color aleatorio RGBA
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            const a = 0.5; 
+            return `rgba(${r}, ${g}, ${b}, ${a})`;
+        }
+
+        // Cambia el color 
+        canvas.addEventListener('mouseover', () => {
+            ColorActual = getRandomColor();
+        });
+
+        // Cambia entre círculo y cuadrado 
+        canvas.addEventListener('mouseout', () => {
+            figuraActual = figuraActual === 'círculo' ? 'cuadrado' : 'círculo';
+        });
+
+        // Listener mousedown
+        canvas.addEventListener('mousedown', (e) => {
+            const x = e.clientX - canvas.getBoundingClientRect().left;
+            const y = e.clientY - canvas.getBoundingClientRect().top;
+
+            // Dibuja una figura (círculo o cuadrado) 
+            ctx.fillStyle = ColorActual;
+            if (figuraActual === 'círculo') {
+                ctx.beginPath();
+                ctx.arc(x, y, 40, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                ctx.closePath();
+            } else if (figuraActual === 'cuadrado') {
+                const size = 75;
+                ctx.fillStyle = ColorActual;
+                ctx.fillRect(x - size / 2, y - size / 2, size, size);
+                ctx.strokeStyle = 'black'; 
+                ctx.lineWidth = 1; 
+                ctx.strokeRect(x - size / 2, y - size / 2, size, size);
+            }
+        });
+    </script>
+</body>
+</html>
+
