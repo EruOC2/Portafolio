@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+
+    <script>
+        const c = document.getElementById("myCanvas");
+        const ctx = c.getContext("2d");
+        
+
+        //body
+        ctx.fillStyle = "rgba(30, 117, 79, 0.8)";
+        ctx.fillRect(140, 100, 220, 280);
+
+        ctx.strokeStyle = "black"; 
+        ctx.lineWidth = 1; 
+        ctx.strokeRect(140, 100, 220, 280); 
+
+        
+        //cara fondo
+        ctx.fillStyle = "rgba(153, 239, 202, 0.8)";
+        ctx.fillRect(160, 120, 180, 120);
+
+        //Linea
+        ctx.fillStyle = "rgba(16, 57, 39, 0.8)";
+        ctx.fillRect(160, 260, 100, 20);
+
+        //cruz
+        ctx.fillStyle = "rgba(255, 255, 0, 1)";
+        ctx.fillRect(180, 300, 20, 60);
+        //cruz
+        ctx.fillStyle = "rgba(255, 255, 0, 1";
+        ctx.fillRect(160, 320, 60, 20);
+
+        //boton azul
+        ctx.fillStyle = "rgba(0, 0, 255, 1)";
+        ctx.fillRect(300, 260, 20, 20);
+
+        //boton verde
+        ctx.fillStyle = "rgba(0, 255, 0, 1)";
+        ctx.fillRect(300, 320, 20, 20);
+
+        //boton azul rojo
+        ctx.fillStyle = "rgba(255, 0, 0, 1)";
+        ctx.fillRect(280, 340, 20, 20);
+
+        //boton azul clarito
+        ctx.fillStyle = "rgba(89, 197, 219, 1)";
+        ctx.fillRect(260, 320, 20, 20);
+
+        //pie d
+        ctx.fillStyle = "rgba(45, 87, 44, 0.8)";
+        ctx.fillRect(300, 380, 20, 70);
+
+        //pie i
+        ctx.fillStyle = "rgba(45, 87, 44, 0.8)";
+        ctx.fillRect(180, 380, 20, 70);
+
+         //brazo d
+         ctx.fillStyle = "rgba(45, 87, 44, 0.8)";
+        ctx.fillRect(360, 260, 90, 20);
+
+        //brazo i
+        ctx.fillStyle = "rgba(45, 87, 44, 0.8)";
+        ctx.fillRect(50, 260, 90, 20);
+
+        //boca
+        ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+        ctx.fillRect(220, 180, 60, 20);
+
+        //ojo d
+        ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+        ctx.fillRect(180, 160, 20, 20);
+
+        //ojo i
+        ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+        ctx.fillRect(300, 160, 20, 20);
+
+        </script>
+        
+</body>
+</html>
