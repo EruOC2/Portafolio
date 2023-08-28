@@ -37,6 +37,7 @@
         let velocidad = 2; // Velocidad de movimiento normal
         let velocidadAumentada = 4; // Velocidad de movimiento aumentada
         let velocidadActual = velocidad;
+        let barraEspaciadoraPresionada = false; // Controla si la barra espaciadora está presionada
 
         document.addEventListener("keydown", (e) => {
             switch (e.key) {
@@ -65,7 +66,10 @@
                     }
                     break;
                 case " ": // Barra espaciadora para aumentar velocidad
-                    velocidadActual = velocidadAumentada;
+                    if (!barraEspaciadoraPresionada) {
+                        velocidadActual += 1; // Incrementar la velocidad actual solo si la barra espaciadora se presiona por primera vez
+                    }
+                    barraEspaciadoraPresionada = true;
                     break;
             }
             moviendo = true;
@@ -73,7 +77,7 @@
 
         document.addEventListener("keyup", (e) => {
             if (e.key === " ") {
-                velocidadActual = velocidad; // Restaurar velocidad normal al soltar la barra espaciadora
+                barraEspaciadoraPresionada = false;
             }
             moviendo = false;
         });
@@ -123,3 +127,4 @@
     </script>
 </body>
 </html>
+
