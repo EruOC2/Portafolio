@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="miCanvas" width="500" height="500"></canvas>
+    <script>
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 17);
+                };
+        }());
+
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+        let x = 225, y = 225;
+        let dx = 0, dy = 0; // Incremento de dirección
+        let moviendo = false;
+        let velocidad = 2; // Velocidad de movimiento normal
+        let velocidadAumentada = 4; // Velocidad de movimiento aumentada
+        let velocidadActual = velocidad;
+
+        document.addEventListener("keydown", (e) => {
+            switch (e.key) {
+                case "w":
+                    if (!moviendo || dy !== 1) {
+                        dy = -1;
+                        dx = 0;
+                    }
+                    break;
+                case "s":
+                    if (!moviendo || dy !== -1) {
+                        dy = 1;
+                        dx = 0;
+                    }
+                    break;
+                case "a":
+                    if (!moviendo || dx !== 1) {
+                        dx = -1;
+                        dy = 0;
+                    }
+                    break;
+                case "d":
+                    if (!moviendo || dx !== -1) {
+                        dx = 1;
+                        dy = 0;
+                    }
+                    break;
+                case " ": // Barra espaciadora para aumentar velocidad
+                    velocidadActual = velocidadAumentada;
+                    break;
+            }
+            moviendo = true;
+        });
+
+        document.addEventListener("keyup", (e) => {
+            if (e.key === " ") {
+                velocidadActual = velocidad; // Restaurar velocidad normal al soltar la barra espaciadora
+            }
+            moviendo = false;
+        });
+
+        function mover() {
+            if (moviendo) {
+                // Actualizar la posición con velocidadActual
+                x += dx * velocidadActual;
+                y += dy * velocidadActual;
+
+                // Comprobar límites y hacer que regrese al otro extremo
+                if (x > canvas.width) {
+                    x = 0;
+                } else if (x < 0) {
+                    x = canvas.width;
+                }
+                if (y > canvas.height) {
+                    y = 0;
+                } else if (y < 0) {
+                    y = canvas.height;
+                }
+
+                update();
+            }
+            window.requestAnimationFrame(mover);
+        }
+
+        function update() {
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const color = obtenerColorAleatorio();
+
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, 50, 50);
+        }
+
+        function obtenerColorAleatorio() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            const a = 0.5;
+            return `rgba(${r}, ${g}, ${b}, ${a})`;
+        }
+
+        window.requestAnimationFrame(mover); // Iniciar el bucle de animación.
+    </script>
+</body>
+</html>
