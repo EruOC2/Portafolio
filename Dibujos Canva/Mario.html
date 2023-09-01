@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        canvas {
+            background-color: white;
+        }
+        body {
+            background-color: black;
+            margin: 0; 
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <canvas width="1200" height="700" id="myCanvas"></canvas>
+    </center>
+
+    <script>
+
+        const c = document.getElementById("myCanvas");
+        const ctx = c.getContext("2d");
+        var lado = 100;
+        var radioEsquinas = 20;
+
+         
+        ctx.fillStyle = "rgba(142, 232, 250, 1)";
+        ctx.fillRect(0, 0, 1200, 700);
+
+
+         
+        ctx.fillStyle = "rgba(238, 143, 61, 1)";
+        ctx.fillRect(0, 650, 1200, 50);
+
+
+
+        ctx.fillStyle = "rgba(235, 172, 117, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(-100, 625, 1400, 25);
+        ctx.strokeRect(-100, 625, 1400, 25);
+        
+
+        ctx.fillStyle = "rgba(70, 169, 255, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(400, 325, 200, 300);
+        ctx.strokeRect(400, 325, 200, 300);
+
+        ctx.fillStyle = "rgba(57, 132, 198, 1)";
+        ctx.fillRect(590, 325, 10, 300);
+
+        ctx.fillStyle = "rgba(57, 132, 198, 1)";
+        ctx.fillRect(390, 615, 200, 10);
+ 
+        ctx.fillStyle = "black";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(604, 350, 25, 275);
+        ctx.strokeRect(604, 350, 25, 275);
+
+        ctx.fillStyle = "rgba(255, 197, 158, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(250, 425, 200, 200);
+        ctx.strokeRect(250, 425, 200, 200);
+
+        ctx.fillStyle = "rgba(249, 138, 64, 1)";
+        ctx.fillRect(440, 426, 8, 196);
+
+        ctx.fillStyle = "rgba(249, 138, 64, 1)";
+        ctx.fillRect(252, 614, 194, 8);
+
+
+        ctx.fillStyle = "black";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(450, 450, 25, 175);
+        ctx.strokeRect(450, 450, 25, 175);
+
+
+        ctx.fillStyle = "rgba(33, 215 , 76, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(1000, 425, 300, 200);
+        ctx.strokeRect(1000, 425, 300, 200);
+
+
+        ctx.fillStyle = "rgba(18, 169, 53, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(750, 475, 150, 150);
+        ctx.strokeRect(750, 475, 150, 150);
+
+        ctx.fillStyle = "rgba(18, 169, 53, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 8; 
+        ctx.fillRect(745, 425, 160, 75);
+        ctx.strokeRect(745, 425, 160, 75);
+
+        ctx.fillStyle = "rgba(18, 169, 53, 1)";
+        ctx.fillRect(745, 425, 160, 75);
+
+
+
+        ctx.fillStyle = "rgba(255, 152, 16, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(50, 325, 75, 75);
+        ctx.strokeRect(50, 325, 75, 75);
+
+        ctx.fillStyle = "rgba(255, 152, 16, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(200, 125, 75, 75);
+        ctx.strokeRect(200, 125, 75, 75);
+
+        ctx.fillStyle = "rgba(255, 152, 16, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(275, 125, 75, 75);
+        ctx.strokeRect(275, 125, 75, 75);
+
+        ctx.fillStyle = "rgba(255, 152, 16, 1)";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 4; 
+        ctx.fillRect(1050, 200, 75, 75);
+        ctx.strokeRect(1050, 200, 75, 75);
+
+
+        ctx.beginPath();
+        ctx.arc(420, 345, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(580, 345, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(580, 600, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(430, 600, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(270, 600, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+
+        ctx.beginPath();
+        ctx.arc(430, 440, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(270, 440, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(1014, 600, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(1014, 445, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(179, 179, 179, 1)";
+        ctx.fill();
+
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(60, 385, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(110, 385, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(60, 335, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(110, 335, 5, 5);
+
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(210, 135, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(260, 135, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(260, 185, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(210, 185, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(285, 185, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(285, 135, 5, 5);
+
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(335, 185, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(335, 135, 5, 5);
+
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(1060, 210, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(1060, 260, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(1110, 210, 5, 5);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(1110, 260, 5, 5);
+
+
+    </script>
+</body>
+</html>
+
+
