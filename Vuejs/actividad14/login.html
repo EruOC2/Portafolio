@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar sesión</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-show="sesionIniciada && !mostrarFormulario">
+      <button @click="mostrarFormulario = true" class="agregar-usuario-button">Agregar Nuevo Usuario</button>
+    </div>
+    
+    <div v-show="!sesionIniciada && !mostrarFormulario">
+      <form @submit.prevent="iniciarSesion">
+        <fieldset>
+          <legend>Usuario:</legend>
+          <input type="text" id="usuario" v-model="formulario.usuario" required>
+        </fieldset>
+        <fieldset>
+          <legend>Contraseña:</legend>
+          <input type="password" id="contrasena" v-model="formulario.contrasena" required>
+        </fieldset>
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    </div>
+
+    <div v-show="sesionIniciada && !mostrarFormulario">
+      <button class="cerrar-sesion-button" @click="cerrarSesion">Cerrar sesión</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="usuario in usuarios" :key="usuario.usuario">
+            <td>{{ usuario.usuario }}</td>
+            <td>{{ usuario.contrasena }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.telefono }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div v-show="mostrarFormulario">
+      <form @submit.prevent="agregarUsuario">
+        <fieldset>
+          <legend>Agregar Nuevo Usuario:</legend>
+          <input type="text" v-model="formulario.usuario" placeholder="Usuario" required>
+          <input type="password" v-model="formulario.contrasena" placeholder="Contraseña" required>
+          <input type="text" v-model="formulario.nombre" placeholder="Nombre" required>
+          <input type="email" v-model="formulario.email" placeholder="Email" required>
+          <input type="tel" v-model="formulario.telefono" placeholder="Teléfono" required>
+        </fieldset>
+        <button type="submit" class="agregar-usuario-button">Agregar Usuario</button>
+        <button type="button" @click="cancelarAgregarUsuario">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        formulario: {
+          usuario: '',
+          contrasena: '',
+          nombre: '',
+          email: '',
+          telefono: ''
+        },
+        usuarios: [],
+        sesionIniciada: false,
+        mostrarFormulario: false
+      },
+      created() {
+        const sesionIniciada = localStorage.getItem('sesionIniciada');
+        if (sesionIniciada === 'true') {
+          this.sesionIniciada = true;
+        }
+        this.cargarUsuarios();
+      },
+      methods: {
+        async iniciarSesion() {
+          const usuario = this.formulario.usuario;
+          const contrasena = this.formulario.contrasena;
+
+          try {
+            const response = await fetch('usuarios.json');
+            this.usuarios = await response.json();
+
+            const usuarioAutenticado = this.usuarios.find(u => u.usuario === usuario && u.contrasena === contrasena);
+
+            if (usuarioAutenticado) {
+              window.alert('Inicio de sesión exitoso.');
+              this.sesionIniciada = true;
+              localStorage.setItem('sesionIniciada', 'true');
+            } else {
+              window.alert('Usuario o contraseña incorrectos.');
+            }
+          } catch (error) {
+            console.error('Error al cargar el archivo JSON:', error);
+          }
+        },
+        cerrarSesion() {
+          this.sesionIniciada = false;
+          localStorage.removeItem('sesionIniciada');
+        },
+        async cargarUsuarios() {
+          try {
+            const response = await fetch('usuarios.json');
+            this.usuarios = await response.json();
+          } catch (error) {
+            console.error('Error al cargar el archivo JSON:', error);
+          }
+        },
+        agregarUsuario() {
+          // Agregar lógica para agregar un nuevo usuario a la lista de usuarios
+          this.usuarios.push({
+            usuario: this.formulario.usuario,
+            contrasena: this.formulario.contrasena,
+            nombre: this.formulario.nombre,
+            email: this.formulario.email,
+            telefono: this.formulario.telefono
+          });
+
+          // Limpiar el formulario
+          this.formulario.usuario = '';
+          this.formulario.contrasena = '';
+          this.formulario.nombre = '';
+          this.formulario.email = '';
+          this.formulario.telefono = '';
+
+          // Cambiar a la vista de la tabla
+          this.mostrarFormulario = false;
+        },
+        cancelarAgregarUsuario() {
+          // Limpiar el formulario
+          this.formulario.usuario = '';
+          this.formulario.contrasena = '';
+          this.formulario.nombre = '';
+          this.formulario.email = '';
+          this.formulario.telefono = '';
+
+          // Ocultar el formulario y volver a la vista de la tabla
+          this.mostrarFormulario = false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
