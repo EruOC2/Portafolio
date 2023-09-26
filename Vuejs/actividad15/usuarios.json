@@ -1,0 +1,31 @@
+[
+  {
+    "usuario": "usuario1",
+    "contrasena": "contrasena1",
+    "nombre": "John Doe",
+    "email": "john@example.com",
+    "telefono": "123-456-7890"
+  },
+  {
+    "usuario": "usuario2",
+    "contrasena": "contrasena2",
+    "nombre": "Jane Smith",
+    "email": "jane@example.com",
+    "telefono": "987-654-3210"
+  },
+  {
+    "usuario": "usuario3",
+    "contrasena": "contrasena3",
+    "nombre": "Mike Johnson",
+    "email": "mike@example.com",
+    "telefono": "555-555-5555"
+  },
+  {
+    "usuario": "usuario4",
+    "contrasena": "contrasena4",
+    "nombre": "Emily Brown",
+    "email": "emily@example.com",
+    "telefono": "777-777-7777"
+  }
+]
+
