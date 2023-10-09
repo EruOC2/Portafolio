@@ -1,0 +1,51 @@
+// Variables
+@bg-color: #f2f2f2;
+@form-bg-color: #ffffff;
+@form-border: 1px solid #ccc;
+@form-padding: 20px;
+@input-padding: 10px;
+@input-margin-bottom: 15px;
+@btn-bg-color: #007bff;
+@btn-text-color: #ffffff;
+@btn-padding: 10px 20px;
+@btn-border: none;
+@btn-border-radius: 5px;
+
+// Estilos para el formulario de inicio de sesión
+.login-form {
+  width: 300px;
+  margin: 0 auto;
+  padding: @form-padding;
+  background-color: @form-bg-color;
+  border: @form-border;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  
+  h2 {
+    text-align: center;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: @input-padding;
+    margin-bottom: @input-margin-bottom;
+    border: @form-border;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color: @btn-bg-color;
+    color: @btn-text-color;
+    padding: @btn-padding;
+    border: @btn-border;
+    border-radius: @btn-border-radius;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: darken(@btn-bg-color, 10%);
+    }
+  }
+}
+
+
