@@ -15,9 +15,10 @@ class SaludoController extends Controller
         return $saludo;
     }
 
-    public function vistaSaludo()
+    public function saludoUsuario($nombre)
     {
-        $nombre = "Visitante";
-        return view('saludo', ['nombre' => $nombre]);
+        $saludo = "¡Hola, $nombre! Bienvenido al paraiso.";
+        return view('saludo', ['saludo' => $saludo]);
     }
 }
+
